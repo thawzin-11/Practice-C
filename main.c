@@ -1,15 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int main()
 {
-    int numberOfArguments = argc;
-    char *arguments1 = argv[0];
-    char *arguments2 = argv[1];
+    // declaring variables
+    double width = 34.2;
+    double height = 65.5;
+    double perimeter = 0.0;
+    double area = 0.0;
 
-    printf("Number of Arguments: %d\n", numberOfArguments);
-    printf("Arguments 1 is the program name: %s\n", arguments1);
-    printf("Auguments 2 is the command line argument: %s\n", arguments2);
+    // performing perimeter calculation
+    perimeter = 2.0 * (height + width);
+    area = width * height;
+
+    // displaying input
+    printf("Width is %.2f, Height is %.2f, Perimeter is %.2f\n", width, height,perimeter);
+    printf("Area is: %2.f", area);
 
     return 0;
 }
