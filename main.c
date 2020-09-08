@@ -3,19 +3,15 @@
 
 int main()
 {
-    // declaring variables
-    double width = 34.2;
-    double height = 65.5;
-    double perimeter = 0.0;
-    double area = 0.0;
+    enum Company { GOOGLE, FACEBOOK, XEROX = 10, YAHOO, EBAY, MICROSOFT};
 
-    // performing perimeter calculation
-    perimeter = 2.0 * (height + width);
-    area = width * height;
+    enum Company xeror = XEROX;
+    enum Company google = GOOGLE;
+    enum Company ebay = EBAY;
 
-    // displaying input
-    printf("Width is %.2f, Height is %.2f, Perimeter is %.2f\n", width, height,perimeter);
-    printf("Area is: %2.f", area);
+    printf("The value of xeror is: %d\n", xeror);
+    printf("The value of google is: %d\n", google);
+    printf("The value of ebay is: %d", ebay);
 
     return 0;
 }
