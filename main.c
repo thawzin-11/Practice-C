@@ -1,68 +1,80 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-
 int main()
 {
-    int age;
-    print("Enter your age: ");
-    scanf("%d", &age);
-    printf("You are %d years old", age);
 
+    char characterName[] = "John";
+    int characterAge = 67;
+
+    printf("There once was a man named %s\n", characterName);
+    printf("he was %d years old.\n", characterAge);
+    printf("He really liked the name %s\n", characterName);
+    printf("but he did not like being %d\n", characterAge);
     return 0;
 }
 
-int userinput_double()
+int datatype()
 {
-    double gpa;
-    printf("Enter your gpa: ");
-    scanf("%lf", &gpa);
-    printf("You are %f years old", gpa);
-
-    return 0;
+    int age = 40;
+    double gpa = 3.6;
+    char grade = 'A';
+    char phrase[] = "Giraffe Academy";
 }
 
-int userinput_char()
+int sampleVariables()
 {
-    char grade;
-    printf("Enter your grade: ");
-    scanf("%c", &grade);
-    printf("You are grade is %c", grade);
+    /* This is a sample program that lists three kids and their school
+    supply needs, as well as cost to buy the supplies */
+    // Set up the variables, as well as define a few
+
+    char firstInitial, middleInitial;
+    int number_of_pencils;
+    int number_of_notebooks;
+    float pencils = 0.23;
+    float notebooks = 2.89;
+    float lunchbox = 4.99;
+
+    //The information for the first child
+    firstInitial = 'J';
+    middleInitial = 'R';
+
+    number_of_pencils = 7;
+    number_of_notebooks = 4;
+
+    printf("%c%c needs %d pencils, %d notebooks, and 1 lunchbox\n",
+           firstInitial, middleInitial,number_of_pencils,
+           number_of_notebooks);
+    printf("The total cost is $%.2f\n\n", number_of_pencils*pencils
+           + number_of_notebooks*notebooks + lunchbox);
+
+    //The information for the second child
+    firstInitial = 'A';
+    middleInitial = 'J';
+
+    number_of_pencils = 10;
+    number_of_notebooks = 3;
+
+    printf("%c%c needs %d pencils, %d notebooks, and 1 lunchbox\n",
+           firstInitial, middleInitial,number_of_pencils,
+           number_of_notebooks);
+    printf("The total cost is $%.2f\n\n", number_of_pencils*pencils
+           + number_of_notebooks*notebooks + lunchbox);
+
+    //The information for the third child
+    firstInitial = 'M';
+    middleInitial = 'T';
+
+    number_of_pencils = 9;
+    number_of_notebooks = 2;
+
+    printf("%c%c needs %d pencils, %d notebooks, and 1 lunchbox\n",
+           firstInitial, middleInitial,number_of_pencils,
+           number_of_notebooks);
+    printf("The total cost is $%.2f\n",
+           number_of_pencils*pencils + number_of_notebooks*notebooks +
+           lunchbox);
 
     return 0;
-}
 
-int userinputfgets()
-{
-    char name[20];
-    printf("Enter your name: ");
-    fgets(name, 20, stdin);
-    printf("Your name is %s", name);
-
-    return 0;
-}
-
-int uinput()
-{
-    char color[20];
-    char pluralNoun[20];
-    char celebrityF[20];
-    char celebrityL[20];
-
-    printf("Enter name of color: ");
-    scanf("%s", color);
-    printf("Enter name of Plural Noun: ");
-    scanf("%s", pluralNoun);
-    printf("Enter name of celebrity: ");
-    scanf("%s %s", celebrityF, celebrityL);
-
-    color[0] = 'B';
-
-    printf("Rose are %s\n", color);
-    printf("%s are blue\n", pluralNoun);
-    printf("I love %s %s\n", celebrityF, celebrityL);
-
-    return 0;
 }
