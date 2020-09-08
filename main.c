@@ -6,35 +6,63 @@
 
 int main()
 {
-    char Kid1[12];
-    // Kid1 can hold an 11-character name
-    // Kid2 will be 7 characters (Maddie plus null 0)
-    char Kid2[] = "Maddie";
-    // Kid3 is also 7 characters, but specifically defined
-    char Kid3[7] = "Andrew";
-    // Hero1 will be 7 characters (adding null 0!)
-    char Hero1 = "Batman";
-    // Hero2 will have extra room just in case
-    char Hero2[34] = "Spiderman";
-    char Hero3[25];
+    int age;
+    print("Enter your age: ");
+    scanf("%d", &age);
+    printf("You are %d years old", age);
 
-        Kid1[0] = 'K';  //Kid1 is being defined character-by-character
-        Kid1[1] = 'a';  //Not efficient, but it does work
-        Kid1[2] = 't';
-        Kid1[3] = 'i';
-        Kid1[4] = 'e';
-        Kid1[5] = '\0'; // Never forget the null 0 so C knows when the string ends
-
-        strcpy(Hero3, "The Incredible Hulk");
-
-        printf("%s\'s favorite hero is %s.\n", Kid1, Hero1);
-        printf("%s\'s favorite hero is %s.\n", Kid2, Hero2);
-        printf("%s\'s favorite hero is %s.\n", Kid3, Hero3);
-
-        return 0;
-
+    return 0;
 }
 
+int userinput_double()
+{
+    double gpa;
+    printf("Enter your gpa: ");
+    scanf("%lf", &gpa);
+    printf("You are %f years old", gpa);
 
+    return 0;
+}
 
+int userinput_char()
+{
+    char grade;
+    printf("Enter your grade: ");
+    scanf("%c", &grade);
+    printf("You are grade is %c", grade);
 
+    return 0;
+}
+
+int userinputfgets()
+{
+    char name[20];
+    printf("Enter your name: ");
+    fgets(name, 20, stdin);
+    printf("Your name is %s", name);
+
+    return 0;
+}
+
+int uinput()
+{
+    char color[20];
+    char pluralNoun[20];
+    char celebrityF[20];
+    char celebrityL[20];
+
+    printf("Enter name of color: ");
+    scanf("%s", color);
+    printf("Enter name of Plural Noun: ");
+    scanf("%s", pluralNoun);
+    printf("Enter name of celebrity: ");
+    scanf("%s %s", celebrityF, celebrityL);
+
+    color[0] = 'B';
+
+    printf("Rose are %s\n", color);
+    printf("%s are blue\n", pluralNoun);
+    printf("I love %s %s\n", celebrityF, celebrityL);
+
+    return 0;
+}
