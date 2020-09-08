@@ -1,20 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
+int main(int argc, char *argv[])
 {
-    int integerVar = 100;
-    float floatingVar = 331.79;
-    double doubleVar = 8.44e+11;
-    char charVar = 'W';
-    _Bool boolVar = 0;
+    int numberOfArguments = argc;
+    char *arguments1 = argv[0];
+    char *arguments2 = argv[1];
 
-    printf("integerVar = %i floatingVar = %f\n", integerVar, floatingVar);
-    printf("floatingVar = %f\n", floatingVar);  //2.f => 2 decimal point
-    printf("doubleVar = %e\n", doubleVar);
-    printf("charVar = %c\n", charVar);
-    printf("boolVar = %i\n", boolVar);
-
+    printf("Number of Arguments: %d\n", numberOfArguments);
+    printf("Arguments 1 is the program name: %s\n", arguments1);
+    printf("Auguments 2 is the command line argument: %s\n", arguments2);
 
     return 0;
 }
