@@ -3,23 +3,14 @@
 
 int main()
 {
-    int minutesEntered = 0;
-    double years = 0.0;
-    double days = 0.0;
-    double minutesInYear = 0;
-
-    printf("Please enter the number of minutes: ");
-
-    //get input from user
-    scanf("%d", &minutesEntered);
-
-    minutesInYear = (60 * 24 * 365);
-
-    years = (minutesEntered / minutesInYear);
-    days = (minutesEntered / 60.0) / 24.0;
-
-    printf("%d minutes is approximately %f years and %f days\n", minutesEntered, years, days);
-
+    printf("Variables of type char occupy %u bytes\n", sizeof(char));
+    printf("Variables of type short occupy %u bytes\n", sizeof(short));
+    printf("Variables of type int occupy %u bytes\n", sizeof(int));
+    printf("Variables of type long occupy %u bytes\n", sizeof(long));
+    printf("Variables of type long long occupy %u bytes\n", sizeof(long long));
+    printf("Variables of type float occupy %u bytes\n", sizeof(float));
+    printf("Variables of type double occupy %u bytes\n", sizeof(double));
+    printf("Variables of type long double occupy %u bytes\n", sizeof(long double));
 
     return 0;
 }
