@@ -3,14 +3,27 @@
 
 int main()
 {
-    printf("Variables of type char occupy %u bytes\n", sizeof(char));
-    printf("Variables of type short occupy %u bytes\n", sizeof(short));
-    printf("Variables of type int occupy %u bytes\n", sizeof(int));
-    printf("Variables of type long occupy %u bytes\n", sizeof(long));
-    printf("Variables of type long long occupy %u bytes\n", sizeof(long long));
-    printf("Variables of type float occupy %u bytes\n", sizeof(float));
-    printf("Variables of type double occupy %u bytes\n", sizeof(double));
-    printf("Variables of type long double occupy %u bytes\n", sizeof(long double));
+    int number_to_test, remainder;
+
+    printf("Enter your number to be tested: ");
+    scanf("%i", &number_to_test);
+    remainder = number_to_test % 2;
+
+    if(remainder == 0)
+        printf("The number is even.\n");
+    else
+        printf("The number is odd.\n");
 
     return 0;
 }
+
+/* can be use "if statement" with curl braces{}
+
+if(remainder == 0){
+    printf("The number is even.\n");
+}
+else{
+    printf("The number is odd.\n");
+}
+   */
+
