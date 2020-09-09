@@ -3,27 +3,23 @@
 
 int main()
 {
-    int number_to_test, remainder;
+    enum Weekly {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday};
+    enum Weekly today = Monday;
 
-    printf("Enter your number to be tested: ");
-    scanf("%i", &number_to_test);
-    remainder = number_to_test % 2;
-
-    if(remainder == 0)
-        printf("The number is even.\n");
-    else
-        printf("The number is odd.\n");
+    switch(today)
+    {
+    case Sunday:
+        printf("Today is Sunday.");
+        break;
+    case Monday:
+        printf("Today is Monday");
+        break;
+    case Tuesday:
+        printf("Today is Tuesday");
+        break;
+    default:
+        printf("Whatever");
+    }
 
     return 0;
 }
-
-/* can be use "if statement" with curl braces{}
-
-if(remainder == 0){
-    printf("The number is even.\n");
-}
-else{
-    printf("The number is odd.\n");
-}
-   */
-
