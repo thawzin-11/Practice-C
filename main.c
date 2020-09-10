@@ -3,26 +3,17 @@
 
 int main()
 {
-    int secretNumber = 5;
-    int guess;
-    int guessCount = 0;
-    int guessLimit = 3;
-    int outOfGuesses = 0;
+    int luckyNumber [] = {4, 8, 15, 16, 23, 42};
 
-    while(guess != secretNumber && outOfGuesses == 0){
-        if(guessCount < guessLimit){
-            printf("Enter a number: ");
-            scanf("%d", &guess);
-            guessCount++;
-        } else {
-            outOfGuesses = 1;
-        }
+    int i;
+    for(i = 0; i < 6; i++){
+        printf("%d\n", luckyNumber[i]);
     }
-    if(outOfGuesses == 1){
-        printf("Out of Guess");
-    } else {
-        printf("You Win");
-    }
+
+    /* int i;
+    for(i = 1; i <= 5; i++){
+        printf("%d\n", i);
+    } */
 
     return 0;
 }
