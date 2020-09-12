@@ -1,94 +1,162 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 
-int gcd(int u, int v);
-float absoluteValue(float x);
-float squareRoot(float x);
+char square[10] = { 'o', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+int choice, player;
+
+int checkForWin();
+void displayBoard();
+void markBoard(char mark);
 
 int main()
 {
-    int result = 0;
+    int gameStatus;
 
-    float  f1 = -15.5, f2 = 20.0, f3 = -5.0;
-    int    i1 = -716;
-    float absoluteValueResult = 0.0;
+    char mark;
 
-    result = gcd(150, 35);
-    printf("The gcd of 150 and 35 is %d\n", result);
+    player = 1;
 
-    result = gcd(1026, 405);
-    printf("The gcd of 1026 and 405 is %d\n", result);
+    do
+    {
+      displayBoard();
 
-    printf("The gcd of 83 and 240 is %d\n\n\n\n", gcd(83, 240));
+      // change turns
+      player = (player % 2) ? 1 : 2;
 
-    /* testing absolute Value Function */
-    absoluteValueResult = absoluteValue (f1);
-    printf ("result = %.2f\n", absoluteValueResult);
-    printf ("f1 = %.2f\n", f1);
+      // get input
+      printf("Player %d, enter a number: ", player);
+      scanf("%d", &choice);
 
-    absoluteValueResult = absoluteValue (f2) + absoluteValue (f3);
-    printf ("result = %.2f\n", absoluteValueResult);
+      // set the correct character based on player turn
+      mark = (player == 1) ? 'X' : 'O';
 
-    absoluteValueResult = absoluteValue ( (float) i1 );
-    printf ("result = %.2f\n", absoluteValueResult);
+      // set board based on user choice or invalid choice
+      markBoard(mark);
 
-    absoluteValueResult = absoluteValue (i1);
-    printf ("result = %.2f\n", absoluteValueResult);
+      gameStatus = checkForWin();
 
-    printf ("%.2f\n\n\n\n", absoluteValue (-6.0) / 4 );
+      player++;
 
-    printf("%.2f\n", squareRoot(-3.0));
-    printf("%.2f\n", squareRoot(16.0));
-    printf("%.2f\n", squareRoot(25.0));
-    printf("%.2f\n", squareRoot(9.0));
-    printf("%.2f\n", squareRoot(225.0));
+    }while (gameStatus == -1);
 
-
-    /* testing square root */
+    if (gameStatus == 1)
+        printf("==>\aPlayer %d win ", --player);
+    else
+        printf("==>\aGame draw");
 
     return 0;
 }
 
-int gcd(int u, int v)
+/*********************************************
+FUNCTION TO RETURN GAME STATUS
+1 FOR GAME IS OVER WITH RESULT
+-1 FOR GAME IS IN PROGRESS
+O GAME IS OVER AND NO RESULT
+ **********************************************/
+int checkForWin()
 {
-    int temp;
+    int returnValue = 0;
 
-    while( v != 0)
+    if (square[1] == square[2] && square[2] == square[3])
     {
-        temp = u % v;
-        u = v;
-        v = temp;
+        returnValue = 1;
     }
+    else if (square[4] == square[5] && square[5] == square[6])
+        returnValue = 1;
 
-    return u;
-}
+    else if (square[7] == square[8] && square[8] == square[9])
+        returnValue = 1;
 
-float squareRoot(float x)
-{
-    const  float  epsilon = .00001;
-    float  guess   = 1.0;
-    float returnValue = 0.0;
+    else if (square[1] == square[4] && square[4] == square[7])
+        returnValue = 1;
 
-    if ( x < 0 )
-    {
-        printf ("Negative argument to squareRoot.\n");
-        returnValue = -1.0;
-    }
+    else if (square[2] == square[5] && square[5] == square[8])
+        returnValue = 1;
+
+    else if (square[3] == square[6] && square[6] == square[9])
+        returnValue = 1;
+
+    else if (square[1] == square[5] && square[5] == square[9])
+        returnValue = 1;
+
+    else if (square[3] == square[5] && square[5] == square[7])
+        returnValue = 1;
+
+    else if (square[1] != '1' && square[2] != '2' && square[3] != '3' &&
+        square[4] != '4' && square[5] != '5' && square[6] != '6' && square[7]
+        != '7' && square[8] != '8' && square[9] != '9')
+        returnValue = 0;
     else
-    {
-        while  ( absoluteValue (guess * guess - x) >= epsilon )
-           guess = ( x / guess + guess ) / 2.0;
-
-        returnValue = guess;
-    }
+        returnValue = -1;
 
     return returnValue;
 }
 
-float absoluteValue(float x)
+/*******************************************************************
+FUNCTION TO DRAW BOARD OF TIC TAC TOE WITH PLAYERS MARK
+ *******************************************************************/
+void displayBoard()
 {
-    if (x < 0)
-        x = -x;
+    system("cls");
 
-    return x;
+    printf("\n\n\tTic Tac Toe\n\n");
+
+    printf("Player 1 (X)  -  Player 2 (O)\n\n\n");
+
+    printf("     |     |     \n");
+    printf("  %c  |  %c  |  %c \n", square[1], square[2], square[3]);
+
+    printf("_____|_____|_____\n");
+    printf("     |     |     \n");
+
+    printf("  %c  |  %c  |  %c \n", square[4], square[5], square[6]);
+
+    printf("_____|_____|_____\n");
+    printf("     |     |     \n");
+
+    printf("  %c  |  %c  |  %c \n", square[7], square[8], square[9]);
+
+    printf("     |     |     \n\n");
+}
+
+/***************************************
+set the board with the correct character,
+x or o in the correct spot in the array
+****************************************/
+void markBoard(char mark)
+{
+    if (choice == 1 && square[1] == '1')
+        square[1] = mark;
+
+    else if (choice == 2 && square[2] == '2')
+        square[2] = mark;
+
+    else if (choice == 3 && square[3] == '3')
+        square[3] = mark;
+
+    else if (choice == 4 && square[4] == '4')
+        square[4] = mark;
+
+    else if (choice == 5 && square[5] == '5')
+        square[5] = mark;
+
+    else if (choice == 6 && square[6] == '6')
+        square[6] = mark;
+
+    else if (choice == 7 && square[7] == '7')
+        square[7] = mark;
+
+    else if (choice == 8 && square[8] == '8')
+        square[8] = mark;
+
+    else if (choice == 9 && square[9] == '9')
+        square[9] = mark;
+    else
+    {
+        printf("Invalid move ");
+
+        player--;
+        getch();
+    }
 }
