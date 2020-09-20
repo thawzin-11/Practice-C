@@ -1,38 +1,68 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// int addTwoNumbers(int, int);
+
 // main()
 // {
-//     int x = 5;
-//     int *iPtr;
+//     int x = 0;
+//     int y = 0;
 
-//     iPtr = &x;
-//     *iPtr = 7;
+//     printf("\nEnter first number: ");
+//     scanf("%d", &x);
+//     printf("\nEnter second number: ");
+//     scanf("%d", &y);
 
-//     printf("Result *iPtr = %p\n", iPtr);
-//     printf("Result &x = %p\n", &x);
-//     return 0;
-// }
+//     printf("\nResult is %d\n", addTwoNumbers(x,y));
 
-/* Printing Pointer Variable Contents */
+// } //end main
+
+// int addTwoNumbers(int x, int y)
+// {
+//     return x + y;
+// } //end addTwoNumbers
+
+
+/* --------------- */
+
+// void demoPassByValue(int);
+
+// main()
+// {
+//     int x = 0;
+
+//     printf("\nEnter a number: ");
+//     scanf("%d", &x);
+
+//     demoPassByValue(x);
+
+//     printf("\nThe original value of x did not change: %d\n", x);
+// } //end main
+
+// void demoPassByValue(int x)
+// {
+//     x += 5;
+//     printf("\nThe value of x is: %d", x);
+// } //end demoPassByValue
+
+/* ------------------------- */
+
+void demoPassByReference(int *);
 
 main()
 {
-    int x = 5;
-    int y = 10;
-    int *iPtr = NULL;
+    int x = 0;
 
-    printf("\niPtr points to: %p\n", iPtr);
-    
-    // assign memory address of y to pointer
-    iPtr = &y;
-    printf("\niPtr now points to: %p\n", iPtr);
+    printf("\nEnter a number: ");
+    scanf("%d", &x);
 
-    //change the value of x to the value of y
-    x = *iPtr;
-    printf("\nThe value of x is now: %d\n", x);
+    demoPassByReference(&x);
 
-    //change the value of y to 15
-    *iPtr = 15;
-    printf("\nThe value of y is now: %d\n", y);
-}
+    printf("\nThe original value of x is: %d\n", x);
+} //end main
+
+void demoPassByReference(int *ptrX)
+{
+    *ptrX += 5;
+    printf("\nThe value of x is now: %d\n", *ptrX);
+} //end demoPassByReference
