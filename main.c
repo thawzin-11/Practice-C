@@ -1,33 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Writing a File */
-// main()
-// {
-//     FILE *fp;
-
-//     fp = fopen("/tmp/test.txt", "w+");
-//     fprintf(fp, "This is testing for fprint......\n");
-//     fputs("This is testing for fputs.....\n", fp);
-//     fclose(fp);
-// }
-
-/* -------------------------------------------------- */
-
-/* Readig a File */
+/* Reading Data File */
 main()
 {
-    FILE *fp;
-    char buff[255];
+    FILE *pRead;
+    char name[10];
 
-    fp = fopen("/tmp/test.txt", "r");
-    fscanf(fp, "%s", buff);
-    printf("1 : %s\n", buff);
+    pRead = fopen("/tmp/names.dat", "r");
 
-    fgets(buff, 255, (FILE*)fp);
-    printf("2: %s\n", buff);
+    if (pRead == NULL)
+    {
+        printf("\nFile cannot be opened\n");
+    }
+    else
+    {
+        printf("\nContents of names.dat\n\n");
+        fscanf(pRead, "%s", name);
 
-    fgets(buff, 255, (FILE*)fp);
-    printf("3 : %s\n", buff);
-    fclose(fp);
-}
+        while (!feof(pRead))
+        {
+            printf("%s\n", name);
+            fscanf(pRead, "%s", name);
+        } //end loop
+    }
+} //end main
