@@ -1,16 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Writing Data File */
+/* Appending Data */
+
+void readData(void);
+
 main()
 {
     FILE *pWrite;
-    char fName[20];
-    char lName[20];
-    char id[15];
-    float gpa;
+    char name[10];
+    char hobby[15];
 
-    pWrite = fopen("/tmp/students.dat", "w");
+    printf("\nCurrent file contents:\n");
+
+    readData();
+
+    printf("\nEnter a new name and hobby: ");
+    scanf("%s%s", name, hobby);
+
+    //open data file for append
+    pWrite = fopen("/tmp/hobbies.dat", "a");
 
     if (pWrite == NULL)
     {
@@ -18,17 +27,40 @@ main()
     }
     else
     {
-        printf("\nEnter first name, last name, id and GPA\n\n");
-        printf("Enter data separated by spaces: ");
-
-        //store data entered by the user into variables
-        scanf("%s%s%s%f", fName, lName, id, &gpa);
-
-        //write variable contents separated by tabs
-        fprintf(pWrite, "%s\t%s\t%s\t%2.f\n", fName, lName, id, gpa);
-
+        //append record information to data file
+        fprintf(pWrite, "%s %s\n", name, hobby);
         fclose(pWrite);
-
+        readData();
     } //end if
-
 } //end main
+
+void readData(void)
+{
+    FILE *pRead;
+    char name[10];
+    char hobby[15];
+
+    //open data file for read access only
+    pRead = fopen("/tmp/hobbies.dat", "r");
+
+    if (pRead == NULL)
+    {
+        printf("\nFile cannot be opened\n");
+    }
+    else
+    {
+        printf("\nName\tHobby\n\n");
+        fscanf(pRead, "%s%s", name, hobby);
+
+        //read records from data file until end of file is reached
+        while (!feof(pRead))
+        {
+            printf("%s\t%s\n", name, hobby);
+            fscanf(pRead, "%s%s", name, hobby);
+        } //end loop
+        
+    } //end if
+    
+    fclose(pRead);
+
+} //end readData
