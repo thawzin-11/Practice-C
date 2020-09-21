@@ -6,8 +6,9 @@ main()
 {
     FILE *pRead;
     char name[10];
+    char hobby[15];
 
-    pRead = fopen("/tmp/names.dat", "r");
+    pRead = fopen("/tmp/hobbies.dat", "r");
 
     if (pRead == NULL)
     {
@@ -15,13 +16,13 @@ main()
     }
     else
     {
-        printf("\nContents of names.dat\n\n");
-        fscanf(pRead, "%s", name);
+        printf("\nName\tHobby\n\n");
+        fscanf(pRead, "%s %s", name, hobby);
 
         while (!feof(pRead))
         {
-            printf("%s\n", name);
-            fscanf(pRead, "%s", name);
+            printf("%s\t%s\n", name, hobby);
+            fscanf(pRead, "%s %s", name, hobby);
         } //end loop
     }
 } //end main
