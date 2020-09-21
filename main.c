@@ -1,28 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Reading Data File */
+/* Writing Data File */
 main()
 {
-    FILE *pRead;
-    char name[10];
-    char hobby[15];
+    FILE *pWrite;
+    char fName[20];
+    char lName[20];
+    char id[15];
+    float gpa;
 
-    pRead = fopen("/tmp/hobbies.dat", "r");
+    pWrite = fopen("/tmp/students.dat", "w");
 
-    if (pRead == NULL)
+    if (pWrite == NULL)
     {
         printf("\nFile cannot be opened\n");
     }
     else
     {
-        printf("\nName\tHobby\n\n");
-        fscanf(pRead, "%s %s", name, hobby);
+        printf("\nEnter first name, last name, id and GPA\n\n");
+        printf("Enter data separated by spaces: ");
 
-        while (!feof(pRead))
-        {
-            printf("%s\t%s\n", name, hobby);
-            fscanf(pRead, "%s %s", name, hobby);
-        } //end loop
-    }
+        //store data entered by the user into variables
+        scanf("%s%s%s%f", fName, lName, id, &gpa);
+
+        //write variable contents separated by tabs
+        fprintf(pWrite, "%s\t%s\t%s\t%2.f\n", fName, lName, id, gpa);
+
+        fclose(pWrite);
+
+    } //end if
+
 } //end main
