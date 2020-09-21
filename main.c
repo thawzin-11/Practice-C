@@ -1,68 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// int addTwoNumbers(int, int);
-
-// main()
+// int main()
 // {
-//     int x = 0;
-//     int y = 0;
+//     int c;
 
-//     printf("\nEnter first number: ");
-//     scanf("%d", &x);
-//     printf("\nEnter second number: ");
-//     scanf("%d", &y);
+//     printf("Enter a value: ");
+//     c = getchar();
 
-//     printf("\nResult is %d\n", addTwoNumbers(x,y));
+//     printf("\nYou Entered: ");
+//     putchar(c);
 
-// } //end main
+//     printf("\nMemory address of you entered: %p\n", &c);
 
-// int addTwoNumbers(int x, int y)
+//     printf("\nSize of memory address: %ld\n", sizeof(c));
+    
+//     return 0;
+// }
+
+/* ---------------------------- */
+
+// int main()
 // {
-//     return x + y;
-// } //end addTwoNumbers
+//     char str[100];
 
+//     printf("\nEnter a value: ");
+//     gets(str);
 
-/* --------------- */
+//     printf("\nYou entered: ");
+//     puts(str);
 
-// void demoPassByValue(int);
+//     printf("\nMemory address of input string: %p\n", &str);
 
-// main()
-// {
-//     int x = 0;
+//     return 0;
+// }
 
-//     printf("\nEnter a number: ");
-//     scanf("%d", &x);
+/* --------------------------------- */
 
-//     demoPassByValue(x);
-
-//     printf("\nThe original value of x did not change: %d\n", x);
-// } //end main
-
-// void demoPassByValue(int x)
-// {
-//     x += 5;
-//     printf("\nThe value of x is: %d", x);
-// } //end demoPassByValue
-
-/* ------------------------- */
-
-void demoPassByReference(int *);
-
-main()
+int main()
 {
-    int x = 0;
+    char str[100];
+    int i;
 
-    printf("\nEnter a number: ");
-    scanf("%d", &x);
+    printf("Enter a value: ");
+    scanf("%s %d", str, &i);
 
-    demoPassByReference(&x);
+    printf("\nYou entered: %s %d\n", str, i);
 
-    printf("\nThe original value of x is: %d\n", x);
-} //end main
-
-void demoPassByReference(int *ptrX)
-{
-    *ptrX += 5;
-    printf("\nThe value of x is now: %d\n", *ptrX);
-} //end demoPassByReference
+    return 0;
+}
