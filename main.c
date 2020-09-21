@@ -1,51 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// int main()
+/* Writing a File */
+// main()
 // {
-//     int c;
+//     FILE *fp;
 
-//     printf("Enter a value: ");
-//     c = getchar();
-
-//     printf("\nYou Entered: ");
-//     putchar(c);
-
-//     printf("\nMemory address of you entered: %p\n", &c);
-
-//     printf("\nSize of memory address: %ld\n", sizeof(c));
-    
-//     return 0;
+//     fp = fopen("/tmp/test.txt", "w+");
+//     fprintf(fp, "This is testing for fprint......\n");
+//     fputs("This is testing for fputs.....\n", fp);
+//     fclose(fp);
 // }
 
-/* ---------------------------- */
+/* -------------------------------------------------- */
 
-// int main()
-// {
-//     char str[100];
-
-//     printf("\nEnter a value: ");
-//     gets(str);
-
-//     printf("\nYou entered: ");
-//     puts(str);
-
-//     printf("\nMemory address of input string: %p\n", &str);
-
-//     return 0;
-// }
-
-/* --------------------------------- */
-
-int main()
+/* Readig a File */
+main()
 {
-    char str[100];
-    int i;
+    FILE *fp;
+    char buff[255];
 
-    printf("Enter a value: ");
-    scanf("%s %d", str, &i);
+    fp = fopen("/tmp/test.txt", "r");
+    fscanf(fp, "%s", buff);
+    printf("1 : %s\n", buff);
 
-    printf("\nYou entered: %s %d\n", str, i);
+    fgets(buff, 255, (FILE*)fp);
+    printf("2: %s\n", buff);
 
-    return 0;
+    fgets(buff, 255, (FILE*)fp);
+    printf("3 : %s\n", buff);
+    fclose(fp);
 }
