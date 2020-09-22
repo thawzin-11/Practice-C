@@ -19,7 +19,7 @@ main()
     scanf("%s%s", name, hobby);
 
     //open data file for append
-    pWrite = fopen("/tmp/hobbies.dat", "a");
+    pWrite = fopen("/home/thawzin/Project/hobbies.dat", "a");
 
     if (pWrite == NULL)
     {
@@ -41,7 +41,7 @@ void readData(void)
     char hobby[15];
 
     //open data file for read access only
-    pRead = fopen("/tmp/hobbies.dat", "r");
+    pRead = fopen("/home/thawzin/Project/hobbies.dat", "r");
 
     if (pRead == NULL)
     {
