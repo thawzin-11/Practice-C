@@ -1,66 +1,57 @@
+/* error-handling routine sample */
+
+// int myFunction()
+// {
+//     int iReturnValue = 0;   //0 for success
+//     /* process something */
+//     if(error)
+//         {
+//             goto ErrorHandler; //go to the error-handling routine
+//         }
+//     /* do some more processing */
+//     if(error)
+//         {
+//             ret_val = [error];
+//             goto ErrorHandler; //go to the error-handling routine
+//         }
+
+// ErrorHandler:
+//         /* error-handling routine */
+//         return iReturnValue ;
+// }
+
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Appending Data */
-
-void readData(void);
-
 main()
-{
-    FILE *pWrite;
-    char name[10];
-    char hobby[15];
-
-    printf("\nCurrent file contents:\n");
-
-    readData();
-
-    printf("\nEnter a new name and hobby: ");
-    scanf("%s%s", name, hobby);
-
-    //open data file for append
-    pWrite = fopen("/home/thawzin/Project/hobbies.dat", "a");
-
-    if (pWrite == NULL)
-    {
-        printf("\nFile cannot be opened\n");
-    }
-    else
-    {
-        //append record information to data file
-        fprintf(pWrite, "%s %s\n", name, hobby);
-        fclose(pWrite);
-        readData();
-    } //end if
-} //end main
-
-void readData(void)
 {
     FILE *pRead;
     char name[10];
     char hobby[15];
 
-    //open data file for read access only
-    pRead = fopen("/home/thawzin/Project/hobbies.dat", "r");
+    pRead = fopen("/home/thawzin/Project/hobbies.txt", "r");
 
     if (pRead == NULL)
     {
-        printf("\nFile cannot be opened\n");
+        goto ErrorHandler;
     }
     else
     {
         printf("\nName\tHobby\n\n");
         fscanf(pRead, "%s%s", name, hobby);
 
-        //read records from data file until end of file is reached
         while (!feof(pRead))
         {
             printf("%s\t%s\n", name, hobby);
-            fscanf(pRead, "%s%s", name, hobby);
+
         } //end loop
         
     } //end if
     
-    fclose(pRead);
+    exit(EXIT_SUCCESS); //exit program normally
 
-} //end readData
+    ErrorHandler:
+        perror("The following error occurred");
+        exit(EXIT_FAILURE); //exit program with error
+
+} //end main
